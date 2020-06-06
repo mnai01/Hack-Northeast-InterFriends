@@ -18,6 +18,7 @@ import {
   Row,
   Col,
 } from 'reactstrap';
+import Backdrop from '../Backdrop/Backdrop';
 import classes from './Navbar.module.css';
 
 const NavbarUnprotected = () => {
@@ -39,7 +40,7 @@ const NavbarUnprotected = () => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className='mr-auto' navbar>
             <Col>
-              <NavItem>
+              <NavItem onClick={toggleNavbar}>
                 <NavLink tag={Link} to='/'>
                   World
                 </NavLink>
@@ -49,7 +50,7 @@ const NavbarUnprotected = () => {
           {isOpen ? (
             <Nav navbar>
               <Col>
-                <NavItem>
+                <NavItem onClick={toggleNavbar}>
                   <NavLink tag={Link} to='/Login'>
                     Login
                   </NavLink>
@@ -68,6 +69,7 @@ const NavbarUnprotected = () => {
           )}
         </Collapse>
       </Navbar>
+      <Backdrop show={isOpen} clicked={toggleNavbar} />
     </div>
   );
 };
