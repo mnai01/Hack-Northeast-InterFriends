@@ -1,0 +1,107 @@
+.container {
+  margin-top: 3rem;
+  margin-left: 15rem;
+  margin-right: 15rem;
+
+  display: grid;
+  grid-template-columns: 280px 350px auto 260px;
+  grid-auto-rows: auto auto auto;
+  grid-gap: 2rem;
+}
+
+.userImage img {
+  width: 280px;
+  max-height: 250px;
+  grid-column-start: 1;
+  grid-column-end: 1;
+}
+
+.userInfo {
+  grid-row-start: 1;
+  grid-column-start: 2;
+  grid-column-end: 2;
+}
+
+.userDescription {
+  grid-row-start: 2;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.friendsTitle {
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  grid-row-start: 2;
+  grid-row-end: 2;
+  grid-column-start: 4;
+  grid-column-end: 4;
+}
+
+.userFriends {
+  float: right;
+  max-width: 250px;
+  max-height: 450px;
+  overflow: hidden;
+  grid-row-start: 3;
+  grid-row-end: 3;
+  grid-column-start: 4;
+  grid-column-end: 4;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.recentLogged {
+  width: 120px;
+  max-height: 120px;
+  float: left;
+  margin-left: 0;
+  margin-top: 10px;
+  margin-bottom: 100px;
+}
+
+.title {
+  padding-top: 5px;
+  display: flex;
+}
+
+.username {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.country {
+  font-size: small;
+  text-align: center;
+}
+
+.userComments {
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 3;
+  grid-row-end: 3;
+}
+
+#circle {
+  margin-top: 3px;
+  width: 20px;
+  height: 20px;
+  background: greenyellow;
+  border-radius: 50%;
+}
+
+#offcircle {
+  margin-top: 3px;
+  width: 20px;
+  height: 20px;
+  background: rgb(255, 0, 0);
+  border-radius: 50%;
+}
+
+@media (max-width: 1400px) {
+  .container {
+    margin-left: 2;
+    margin-right: 2;
+  }
+}
