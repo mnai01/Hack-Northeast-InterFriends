@@ -22,41 +22,77 @@ const NavbarProtected = () => {
 
   return (
     <div>
-      <Navbar sticky='top' color='dark' dark expand='md'>
+      <Navbar sticky='top' color='light' light expand='md'>
         <NavbarBrand tag={Link} to='/'>
           Farfriends
         </NavbarBrand>
         <NavbarToggler onClick={toggleNavbar} className='mr-2' />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className='mr-auto' navbar>
-            <NavItem onClick={toggleNavbar}>
-              <NavLink tag={Link} to='/World'>
-                World
-              </NavLink>
-            </NavItem>
-            <NavItem onClick={toggleNavbar}>
-              <NavLink tag={Link} to='/Profile'>
-                Profile
-              </NavLink>
-            </NavItem>
-            <NavItem onClick={toggleNavbar}>
-              <NavLink tag={Link} to='/Search'>
-                Search
-              </NavLink>
-            </NavItem>
-            <NavItem onClick={toggleNavbar}>
-              <NavLink tag={Link} to='/Chat'>
-                Chat
-              </NavLink>
-            </NavItem>
-          </Nav>
-          <Nav className='mr-right' navbar>
-            <NavItem onClick={toggleNavbar}>
-              <NavLink tag={Link} to='/Chat'>
-                Logout
-              </NavLink>
-            </NavItem>
-          </Nav>
+          {isOpen ? (
+            <>
+              <Nav className='mr-auto' navbar>
+                <NavItem onClick={toggleNavbar}>
+                  <NavLink tag={Link} to='/World'>
+                    World
+                  </NavLink>
+                </NavItem>
+                <NavItem onClick={toggleNavbar}>
+                  <NavLink tag={Link} to='/Profile'>
+                    Profile
+                  </NavLink>
+                </NavItem>
+                <NavItem onClick={toggleNavbar}>
+                  <NavLink tag={Link} to='/Search'>
+                    Search
+                  </NavLink>
+                </NavItem>
+                <NavItem onClick={toggleNavbar}>
+                  <NavLink tag={Link} to='/Chat'>
+                    Chat
+                  </NavLink>
+                </NavItem>
+              </Nav>
+              <Nav className='mr-right' navbar>
+                <NavItem onClick={toggleNavbar}>
+                  <NavLink tag={Link} to='/Chat'>
+                    Logout
+                  </NavLink>
+                </NavItem>
+              </Nav>
+            </>
+          ) : (
+            <>
+              <Nav className='mr-auto' navbar>
+                <NavItem>
+                  <NavLink tag={Link} to='/World'>
+                    World
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={Link} to='/Profile'>
+                    Profile
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={Link} to='/Search'>
+                    Search
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={Link} to='/Chat'>
+                    Chat
+                  </NavLink>
+                </NavItem>
+              </Nav>
+              <Nav className='mr-right' navbar>
+                <NavItem>
+                  <NavLink tag={Link} to='/Chat'>
+                    Logout
+                  </NavLink>
+                </NavItem>
+              </Nav>
+            </>
+          )}
         </Collapse>
       </Navbar>
       <Backdrop show={isOpen} clicked={toggleNavbar} />
