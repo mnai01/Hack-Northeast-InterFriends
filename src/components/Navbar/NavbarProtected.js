@@ -14,6 +14,7 @@ import {
   DropdownItem,
   NavbarText,
 } from 'reactstrap';
+import Backdrop from '../Backdrop/Backdrop';
 
 const NavbarProtected = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,29 +29,29 @@ const NavbarProtected = () => {
         <NavbarToggler onClick={toggleNavbar} className='mr-2' />
         <Collapse isOpen={isOpen} navbar>
           <Nav className='mr-auto' navbar>
-            <NavItem>
+            <NavItem onClick={toggleNavbar}>
               <NavLink tag={Link} to='/World'>
                 World
               </NavLink>
             </NavItem>
-            <NavItem>
+            <NavItem onClick={toggleNavbar}>
               <NavLink tag={Link} to='/Profile'>
                 Profile
               </NavLink>
             </NavItem>
-            <NavItem>
+            <NavItem onClick={toggleNavbar}>
               <NavLink tag={Link} to='/Search'>
                 Search
               </NavLink>
             </NavItem>
-            <NavItem>
+            <NavItem onClick={toggleNavbar}>
               <NavLink tag={Link} to='/Chat'>
                 Chat
               </NavLink>
             </NavItem>
           </Nav>
           <Nav className='mr-right' navbar>
-            <NavItem>
+            <NavItem onClick={toggleNavbar}>
               <NavLink tag={Link} to='/Chat'>
                 Logout
               </NavLink>
@@ -58,6 +59,7 @@ const NavbarProtected = () => {
           </Nav>
         </Collapse>
       </Navbar>
+      <Backdrop show={isOpen} clicked={toggleNavbar} />
     </div>
   );
 };
