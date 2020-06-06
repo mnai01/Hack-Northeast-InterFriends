@@ -5,6 +5,7 @@ import NavbarUnprotected from './components/Navbar/NavbarUnprotected';
 import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';
 import Landing from './components/Landing/Landing';
+import Profile from './components/Profile/Profile';
 
 import { toast } from 'react-toastify';
 
@@ -25,7 +26,11 @@ const Content = () => {
       <Route
         {...rest}
         render={(props) =>
-          auth ? <Component {...props} /> : <Redirect to={{ pathname: '/' }} />
+          auth ? (
+            <Component {...props} />
+          ) : (
+            <Redirect to={{ pathname: '/Register' }} />
+          )
         }
       />
     );
@@ -63,9 +68,12 @@ const Content = () => {
           <Route exact path='/' component={Landing} />
           <Route exact path='/Login' component={Login} />
           <Route exact path='/Register' component={Registration} />
-          <PrivateRoute>
-            <PrivateRoute exact path='/Profile' component={Login} auth={auth} />
-          </PrivateRoute>
+          <PrivateRoute
+            exact
+            path='/Profile/:id'
+            component={Profile}
+            auth={auth}
+          />
         </Switch>
       </Router>
     </div>
