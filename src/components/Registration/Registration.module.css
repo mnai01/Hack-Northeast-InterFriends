@@ -1,0 +1,11 @@
+.container {
+  display: grid;
+  padding: 15px;
+  margin-top: 20vh;
+}
+
+.loginForm {
+  max-width: 400px;
+  width: 100%;
+  margin: auto;
+}
