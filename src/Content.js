@@ -4,6 +4,9 @@ import NavbarProtected from './components/Navbar/NavbarProtected';
 import NavbarUnprotected from './components/Navbar/NavbarUnprotected';
 import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';
+import Landing from './components/Landing/Landing';
+
+import { toast } from 'react-toastify';
 
 import { GlobalContext } from './context/GlobalState';
 import {
@@ -15,7 +18,7 @@ import {
 } from 'react-router-dom';
 
 const Content = () => {
-  const { auth } = useContext(GlobalContext);
+  const { auth, loginError, RegisterError } = useContext(GlobalContext);
 
   const PrivateRoute = ({ component: Component, ...rest }) => {
     return (
@@ -28,18 +31,44 @@ const Content = () => {
     );
   };
 
+  if (loginError) {
+    toast.error('Could not find account', {
+      position: 'top-right',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
+
+  if (RegisterError) {
+    toast.error('Could not Register account, try again', {
+      position: 'top-right',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
+
   return (
-    <Router>
-      {auth ? <NavbarProtected /> : <NavbarUnprotected />}
-      <Switch>
-        <Route exact path='/'></Route>
-        <Route exact path='/Login' component={Login} />
-        <Route exact path='/Register' component={Registration} />
-        <PrivateRoute>
-          <PrivateRoute exact path='/Profile' component={Login} auth={auth} />
-        </PrivateRoute>
-      </Switch>
-    </Router>
+    <div>
+      <Router>
+        {auth ? <NavbarProtected /> : <NavbarUnprotected />}
+        <Switch>
+          <Route exact path='/' component={Landing} />
+          <Route exact path='/Login' component={Login} />
+          <Route exact path='/Register' component={Registration} />
+          <PrivateRoute>
+            <PrivateRoute exact path='/Profile' component={Login} auth={auth} />
+          </PrivateRoute>
+        </Switch>
+      </Router>
+    </div>
   );
 };
 
