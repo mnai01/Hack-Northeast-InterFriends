@@ -24,24 +24,32 @@ export default function Registration() {
   const [email, setEmail] = useState('');
   const [DOB, setDOB] = useState('');
   const [sex, setSex] = useState('');
-  const [nativeLanguage, setNativeLanguage] = useState('Afghanistan');
+  const [nativelanguage, setNativeLanguage] = useState('');
   const [country, setCountry] = useState('');
 
-  const { login, auth } = useContext(GlobalContext);
+  const { register } = useContext(GlobalContext);
 
   const Register = async (e) => {
     console.log(username + ' ' + password);
-    await login(username, password);
+    await register(
+      username,
+      password,
+      firstname,
+      lastname,
+      email,
+      DOB,
+      sex,
+      nativelanguage,
+      country
+    );
     // Calling event.persist() on the synthetic event removes the event from the pool allowing references to the event to be retained asynchronously.
     // e.preventDefault gives error
     e.persist();
-    return <Redirect to={{ pathname: '/' }} />;
   };
 
   return (
     <div className={classes.container}>
-      {auth && <Redirect to={{ pathname: '/' }} />}
-      <AvForm className={classes.loginForm}>
+      <AvForm className={classes.loginForm} onValidSubmit={Register}>
         <h1 className='text-center'>Farfriends</h1>
         <Row>
           <Col>
@@ -104,8 +112,8 @@ export default function Registration() {
               <AvField
                 type='select'
                 name='country'
-                placeholder='Email'
                 onChange={(e) => setPassword(e.target.value)}
+                name='Choose Country...'
                 required
               >
                 {countryOptions}
@@ -160,8 +168,7 @@ export default function Registration() {
             </FormGroup>
           </Col>
         </Row>
-
-        <Button size='lg' block onClick={Register}>
+        <Button size='lg' block>
           Register
         </Button>
       </AvForm>
