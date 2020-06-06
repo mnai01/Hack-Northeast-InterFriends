@@ -4,7 +4,7 @@ import axios from 'axios';
 
 // Initial State
 const initialState = {
-  auth: false,
+  auth: true,
   currentUser: {},
   loginError: false,
   RegisterError: false,
@@ -43,7 +43,6 @@ export const GlobalProvider = ({ children }) => {
           payload: userdata,
         });
         // here to show the api didnt find any user or error accorded
-        return true;
       });
 
     // TEST REMOVE WHEN REAL API READY
