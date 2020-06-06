@@ -18,7 +18,7 @@ import {
   Row,
   Col,
 } from 'reactstrap';
-import file from './file.module.css';
+import classes from './Navbar.module.css';
 
 const NavbarUnprotected = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -58,10 +58,10 @@ const NavbarUnprotected = () => {
             </Nav>
           ) : (
             <>
-              <Col xs='12' sm='4' md='3' lg='2' className={file.navbarInput}>
+              <Col xs='12' sm='4' md='3' lg='2' className={classes.navbarInput}>
                 <Input size='sm' type='text' placeholder='Username' />
               </Col>
-              <Col className={file.navbarInput} xs='12' sm='4' md='3' lg='2'>
+              <Col className={classes.navbarInput} xs='12' sm='4' md='3' lg='2'>
                 <Input size='sm' type='text' placeholder='password' />
               </Col>
             </>
