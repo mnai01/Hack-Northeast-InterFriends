@@ -12,14 +12,16 @@ export default function Login() {
 
   const LoginPress = async (e) => {
     console.log(username + ' ' + password);
-    await login(username, password);
+    // await login(username, password);
     // Calling event.persist() on the synthetic event removes the event from the pool allowing references to the event to be retained asynchronously.
     // e.preventDefault gives error
     e.persist();
-    return <Redirect to={{ pathname: '/' }} />;
   };
 
-  const Register = () => {};
+  const RegisterRedirect = (e) => {
+    e.persist();
+    return <Redirect to={{ pathname: '/Register' }} />;
+  };
 
   return (
     <div className={classes.container}>
@@ -47,8 +49,10 @@ export default function Login() {
         <Button size='lg' block onClick={LoginPress}>
           Login
         </Button>
-        <Button size='lg' block>
-          Register
+        <Button size='lg' block onClick={LoginPress}>
+          <Link className={classes.link} to='/Register'>
+            Register
+          </Link>
         </Button>
       </Form>
     </div>
