@@ -4,10 +4,13 @@ import axios from 'axios';
 
 // Initial State
 const initialState = {
-  auth: true,
-  currentUser: {},
+  auth: false,
+  token: false,
   loginError: false,
   RegisterError: false,
+  RecentlyOnline: [],
+  RecentlyJoined: [],
+  LandingPageLoaded: false,
 };
 
 export const GlobalContext = createContext(initialState);
@@ -17,30 +20,30 @@ export const GlobalProvider = ({ children }) => {
 
   // Actions
   function login(username, password) {
-    console.log('in global');
-    const userdata = {};
-    const URL = 'https://sdfdfdp.com/api/users';
+    let token = false;
+    const URL = 'https://hack-ne.herokuapp.com/login';
     const data = { username, password };
     axios
       .post(URL, data)
       .then((res) => {
-        console.log('in then');
-        userdata = res.data;
+        token = res;
         dispatch({
           type: 'POST-AUTHENTICATE',
           auth: true,
           loginError: false,
-          payload: userdata,
+          payload: token,
         });
       })
       .catch((err) => {
         console.log(err);
+        console.log(token);
+
         console.log('in error');
         dispatch({
           type: 'POST-AUTHENTICATE',
           auth: false,
           loginError: true,
-          payload: userdata,
+          payload: token,
         });
         // here to show the api didnt find any user or error accorded
       });
@@ -57,34 +60,34 @@ export const GlobalProvider = ({ children }) => {
     password,
     firstname,
     lastname,
+    dob,
     email,
-    DOB,
     sex,
     nativelanguage,
     country
   ) {
-    console.log('in global');
-    const userdata = {};
-    const URL = 'https://asdsdasdsadasd.com/api/users';
+    let token = false;
+    const URL = 'https://hack-ne.herokuapp.com/auth/signup';
     const data = {
       username,
       password,
-      firstname,
-      lastname,
-      email,
-      DOB,
-      sex,
-      nativelanguage,
-      country,
+      first_name: firstname,
+      last_name: lastname,
+      dob,
+      // email,
+      // sex,
+      // nativelanguage,
+      // country,
     };
     axios
       .post(URL, data)
       .then((res) => {
-        userdata = res.data;
+        token = res.data.token; // not yet implemented
+        console.log(res);
         dispatch({
           type: 'POST-REGISTER',
           auth: true,
-          payload: userdata,
+          payload: token,
           RegisterError: false,
         });
       })
@@ -95,9 +98,24 @@ export const GlobalProvider = ({ children }) => {
           type: 'POST-REGISTER',
           auth: false,
           RegisterError: true,
-          payload: userdata,
+          payload: token,
         });
       });
+  }
+
+  function getLandingPageInfo() {
+    const URL = 'https://hack-ne.herokuapp.com/api';
+    axios
+      .get(URL)
+      .then((res) => {
+        console.log(res);
+        dispatch({
+          type: 'GET-LANDING-INFO',
+          payload: res.data,
+          loaded: true,
+        });
+      })
+      .catch((err) => console.log(err));
   }
 
   return (
@@ -106,8 +124,13 @@ export const GlobalProvider = ({ children }) => {
         auth: state.auth,
         loginError: state.loginError,
         RegisterError: state.RegisterError,
+        RecentlyOnline: state.RecentlyOnline,
+        RecentlyJoined: state.RecentlyJoined,
+        LandingPageLoaded: state.LandingPageLoaded,
         login,
         register,
+        getLandingPageInfo,
+
         //function here
       }}
     >

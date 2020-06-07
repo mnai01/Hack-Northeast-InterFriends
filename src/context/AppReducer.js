@@ -14,11 +14,18 @@ export default (state, action) => {
         ...state,
         RegisterError: action.RegisterError,
         auth: action.auth,
-        currentUser: action.payload,
+        token: action.payload,
       };
     // case `POST-LOGIN-ERROR`:
     //   return { ...state, loginError: action.loginError, auth: action.auth };
     case `GET-RECENTLY-LOGGED-ON`:
       return { ...state, loginError: action.loginError, auth: action.auth };
+    case 'GET-LANDING-INFO':
+      return {
+        ...state,
+        RecentlyOnline: action.payload.mostRecent,
+        RecentlyJoined: action.payload.newMemebers,
+        LandingPageLoaded: action.loaded,
+      };
   }
 };
