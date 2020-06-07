@@ -6,6 +6,8 @@ import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';
 import Landing from './components/Landing/Landing';
 import Profile from './components/Profile/Profile';
+import UserFilter from './components/UserFilter/UserFilter';
+import axios from 'axios';
 
 import { toast } from 'react-toastify';
 
@@ -68,6 +70,7 @@ const Content = () => {
           <Route exact path='/' component={Landing} />
           <Route exact path='/Login' component={Login} />
           <Route exact path='/Register' component={Registration} />
+          <Route exact path='/Search' component={UserFilter} />
           <PrivateRoute
             exact
             path='/Profile/:id'
