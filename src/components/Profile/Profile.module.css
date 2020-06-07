@@ -40,6 +40,7 @@
 }
 
 .userFriends {
+  margin-left: auto;
   float: right;
   max-width: 250px;
   max-height: 450px;
@@ -48,8 +49,6 @@
   grid-row-end: 3;
   grid-column-start: 4;
   grid-column-end: 4;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .recentLogged {
@@ -99,9 +98,60 @@
   border-radius: 50%;
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1250px) {
   .container {
-    margin-left: 2;
-    margin-right: 2;
+    margin-left: 2rem;
+    margin-right: 20vw;
+    grid-template-columns: 280px 350px 260px;
+    grid-auto-rows: auto auto auto auto;
+  }
+  .userFriends {
+    margin-right: auto;
+  }
+  .friendsTitle {
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    grid-row-start: 4;
+    grid-column-start: 2;
+  }
+  .userFriends {
+    grid-row-start: 4;
+    grid-column-start: 2;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin-left: auto;
+    padding: 10px;
+    grid-template-columns: 280px 250px;
+    grid-gap: 1rem;
+  }
+  .userImage img {
+    width: 200px;
+    max-height: 250px;
+    grid-column-start: 1;
+    grid-column-end: 1;
+  }
+
+  .friendsTitle {
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    grid-row-start: 4;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 1;
+  }
+  .userFriends {
+    grid-row-start: 5;
+    grid-row-end: 5;
+    grid-column-start: 1;
+    grid-column-end: 1;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
