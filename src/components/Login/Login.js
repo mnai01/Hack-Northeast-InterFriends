@@ -11,9 +11,9 @@ export default function Login() {
 
   const { login, auth, loginError } = useContext(GlobalContext);
 
-  const LoginPress = async (e) => {
+  const LoginPress = (e) => {
     console.log(username + ' ' + password);
-    await login(username, password);
+    login(username, password);
     console.log(loginError);
 
     // if (loginError) {

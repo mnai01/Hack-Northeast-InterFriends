@@ -11,6 +11,7 @@ const initialState = {
   RecentlyOnline: [],
   RecentlyJoined: [],
   LandingPageLoaded: false,
+  TotalOnline: 0,
 };
 
 export const GlobalContext = createContext(initialState);
@@ -89,6 +90,7 @@ export const GlobalProvider = ({ children }) => {
           auth: true,
           payload: token,
           RegisterError: false,
+          loginError: false,
         });
       })
       .catch((err) => {
@@ -127,6 +129,7 @@ export const GlobalProvider = ({ children }) => {
         RecentlyOnline: state.RecentlyOnline,
         RecentlyJoined: state.RecentlyJoined,
         LandingPageLoaded: state.LandingPageLoaded,
+        TotalOnline: state.TotalOnline,
         login,
         register,
         getLandingPageInfo,

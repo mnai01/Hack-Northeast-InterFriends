@@ -13,6 +13,7 @@ export default (state, action) => {
       return {
         ...state,
         RegisterError: action.RegisterError,
+        loginError: action.loginError,
         auth: action.auth,
         token: action.payload,
       };
@@ -25,6 +26,7 @@ export default (state, action) => {
         ...state,
         RecentlyOnline: action.payload.mostRecent,
         RecentlyJoined: action.payload.newMemebers,
+        TotalOnline: action.payload.noOnline,
         LandingPageLoaded: action.loaded,
       };
   }
