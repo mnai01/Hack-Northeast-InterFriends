@@ -7,8 +7,8 @@ We've created an application where users from around the world can connect with 
 
 ## The Building
 - Backend hosting using Heroku
-- Backend using Node & Express (Josh)
-- Frontend using React + Global State (Ian)
+- Backend using Node & Express [Josh](https://github.com/J-Obog)
+- Frontend using React + Global State [Ian](https://github.com/mnai01)
 
 ## The Difficulties
 This project has led to some mind-numbingly frustrating experiences which at the end of the day was actually a small fix. In addition to that, some of our teammates dropped out leaving only the two of us. This unexpected dropout caused us to change languages/frameworks for the backend mid-project. No hard feelings.
