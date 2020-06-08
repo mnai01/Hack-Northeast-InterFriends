@@ -1,6 +1,6 @@
 # Hack Northeast Interfriends
 
-![interfriends](assets/interfriends.JPG)
+![interfriends](assets/interfriends.jpg)
 
 ## The Inspiration
 
