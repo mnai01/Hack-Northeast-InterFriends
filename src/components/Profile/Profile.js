@@ -67,7 +67,7 @@ export default function Profile() {
       </div>
 
       <div className={classes.userComments}>
-        <Label>Description</Label>
+        <Label>Comment</Label>
         <Input type='textarea'></Input>
       </div>
     </div>
